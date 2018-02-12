@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>精雕在线进销存</title>
+		<link rel="stylesheet" type="text/css" href="DatePicker/skin/WdatePicker.css" />
+		<link rel="stylesheet" href="css/jquery.searchableSelect.css" />
+		<link rel="stylesheet" type="text/css" href="css/page_style.css" />
+		<link rel="stylesheet" type="text/css" href="css/i_psi.css" />
+		<!--[if lt IE 11]>
+		<script src="js/json2.js" type="text/javascript" charset="utf-8"></script>
+		<![endif]-->
+	</head>
+	<style type="text/css">
+		.searchable-select {
+			max-width: 300px !important;
+		}
+		
+		.model_form span {
+			width: 80px;
+		}
+	</style>
+
+	<body> 
+		<div class="content_box">
+			<div class="row-fluid">
+				<div class="content_right dispy_none">
+					<!--供应商新增-->
+					<div class="bg-model div_overlay" id="supply_add">
+						<div class='content div_content' style="width: 450px;">
+							<div class="model_nav">
+								<label>供应商新增</label>
+								<i class="icon-clear icon-clear_margin clear_model_icon">&#xe8e7;</i>
+							</div>
+							<div class="model_list" style="text-align: center;padding: 10px 15px 0 15px;">
+								<div class="model_list_append">
+									<div class="model_form">
+										<span>供应商名称</span><input id="cust_name" class="edit_input" maxlength="100" />
+									</div>
+									<div class="model_form">
+										<span>联系人</span><input id="cust_con" class="edit_input" maxlength="12" />
+									</div>
+									<div class="model_form">
+										<span>供应商地址</span><input id="cust_address" class="edit_input" maxlength="50" />
+									</div>
+									<div class="model_form">
+										<span>供应商电话</span><input id="cust_tel" class="edit_input" maxlength="50" />
+									</div>
+									<div class="model_form">
+										<span>备注</span><input id="cust_others" class="edit_input" maxlength="100" />
+									</div> 
+								</div>
+							</div>
+							<div class="prompt_model">
+
+							</div>
+							<div class="modelbtn_box" style="padding-bottom: 25px;padding-top: 5px;">
+								<a id="save_supply" href="#" class="save_btn btn_style">确定</a>
+								<!--<a id="out_model" href="#" class="clear_model">返回</a>-->
+							</div>
+						</div>
+					</div>
+
+					<div class="content_top" style="text-align: left;">
+						<label>进货单修改</label>
+						<div class="form_box" style="padding-left: 15px;">
+							<div class="form_content" style="width: 69%;">
+								<label>供应商</label>
+								<span class="dispy_none" id="select_value"></span>
+								<select id="custname_select"></select>
+								<a href="#" class="white_btn btn_style" id="supply_btn" style="position: absolute;margin-left: 400px;margin-top: -34px;">新增</a>
+							</div>
+							<div class="form_content" style="width: 30%;">
+								<label>进货日期</label>
+								<input type="text" id="purdate" class="Wdate" readonly value="" onClick="WdatePicker({maxDate:'%y-%M-%d'})" style="cursor:pointer;" />
+							</div>
+							<div class="form_content" style="width: 69%;">
+								<label>进货备注</label>
+								<input type="text" id="purothers" value="" style="width: 300px;" maxlength="100"/>
+							</div>
+							<div class="form_content" style="width: 30%;">
+								<label>预到日期</label>
+								<input type="text" id="senddate" class="Wdate" readonly value="" onClick="WdatePicker({minDate:'%y-%M-%d'})" style="cursor:pointer;" />
+							</div>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_box" style="overflow-x: auto;">
+							<table id="table_center" class="table newpur_table pur_table">
+								<thead>
+									<tr>
+										<th>序号</th>
+										<th>商品编码</th>
+										<th>商品名称</th>
+										<th>规格型号</th>
+										<th>单位</th>
+										<th>仓库</th>
+										<th style="text-align: right;">数量</th>
+										<th style="text-align: right;">单价</th>
+										<th style="text-align: right;">金额</th>
+										<th>备注</th>
+									</tr>
+								</thead>
+								<tbody>
+
+								</tbody>
+								<tfoot>
+									<tr>
+										<td height="34px" style="font-weight: bold;">合计</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td id="sum_amount" style="font-weight: bold;text-align: right;"></td>
+										<td></td>
+										<td id="table_totalmoney" style="font-weight: bold;text-align: right;"></td>
+										<td></td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+					<div class="bottom_content">
+						<div class="detail_bottom_box">
+							<div class="" style="width: 70%;float: left;text-align: left;">
+								<span class="data_name">录入人：</span><label class="data_name" id="operator"></label>
+							</div>
+							<div class="" style="width: 27%;float: left;text-align: left;">
+								<span class="data_time">录入日期：</span><label class="data_time" id="input_date"></label>
+							</div>
+						</div>
+						<div class="btn_box" style="margin-right: 60px;">
+							<a href="#" class="save_btn btn_style" id="modifysave_btn">保存</a>
+							<a href="#" class="white_btn btn_style" id="out_saledetail">返回</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/i_nav_menu.js" type="text/javascript" charset="utf-8"></script>
+	<script src="DatePicker/WdatePicker.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/jquery.searchableSelect.js"></script>
+	<script src="js/paging.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/i_psi_pub.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/i_purmodify.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

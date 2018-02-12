@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+	<meta charset="utf-8" />
+	<title>精雕在线进销存</title>
+	<link rel="stylesheet" type="text/css" href="css/page_style.css" />
+	<link rel="stylesheet" type="text/css" href="css/i_psi.css" />
+	<!--[if lt IE 11]>
+		<script src="js/json2.js" type="text/javascript" charset="utf-8"></script>
+		<![endif]-->
+</head>
+<style type="text/css">
+	td,
+	th {
+		border-left: none;
+	}
+
+	.stock_search input,
+	.stock_search select {
+		margin-left: 0;
+	}
+</style>
+
+<body>
+	<div class="content_box">
+		<div class="row-fluid">
+			<div class="content_right dispy_none">
+				<div class="content_top" style="text-align: left;">
+					<label>库存查询</label>
+					<div class="form_box" style="text-align: start;padding: 20px 0 0px 15px;">
+						<div class="stock_search">
+							<label>商品名称</label>
+							<input id="prodname" maxlength="30" />
+						</div>
+						<div class="stock_search">
+							<label>商品型号</label>
+							<input id="prodcode" maxlength="20" />
+						</div>
+						<div class="stock_search">
+							<label>商品编码</label>
+							<input id="prod_barcode" maxlength="20" />
+						</div>
+						<div class="stock_search">
+							<label>商品类型</label>
+							<select id="prodsort" style="padding: 6px 5px;">
+								<option value="">全部</option>
+							</select>
+						</div>
+						<div class="stock_search">
+							<label>仓库</label>
+							<select id="storename" style="padding: 6px 5px;width: 100px;">
+								<option value="">全部</option>
+							</select>
+						</div>
+						<a href="#" class="save_btn btn_style" id="search_btn" style="margin-top: 7px;">搜索</a>
+					</div>
+				</div>
+				<div class="content_middle">
+					<div class="middle_box" style="overflow-x: auto;">
+						<table id="table_center" class="table stocklist_table">
+							<thead>
+								<tr>
+									<th style="width:20%;text-align: left !important;">商品名称</th>
+									<th style="width: 15%">商品型号</th>
+									<th style="width: 15%">商品编码</th>
+									<th style="width: 10%">商品类型</th>
+									<th style="width: 10%;text-align: right !important;">售价</th>
+									<th style="width: 10%">仓库</th>
+									<th style="width: 10%;text-align: right !important;">库存数</th>
+									<th style="width: 10%">单位</th>
+								</tr>
+							</thead>
+							<tbody>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="bottom_content">
+					<ul class="page_div">
+
+					</ul>
+					<span id="page_no" class="dispy_none"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/i_nav_menu.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/paging.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/i_psi_pub.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/i_stocklist.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

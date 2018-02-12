@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>精雕在线进销存</title>
+		<link rel="stylesheet" type="text/css" href="css/page_style.css" />
+		<link rel="stylesheet" type="text/css" href="css/i_psi.css" />
+		<!--[if lt IE 11]>
+		<script src="js/json2.js" type="text/javascript" charset="utf-8"></script>
+		<![endif]-->
+		<!--[if lt IE 9]>
+       	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+     	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    	<![endif]-->
+	</head>
+	<style type="text/css">
+		td,
+		th {
+			border-left: none;
+		}
+	</style>
+
+	<body>
+		<div class="content_box">
+			<div class="row-fluid">
+				<div class="content_right dispy_none">
+					<div class="content_top" style="text-align: left;overflow: hidden;">
+						<label id="pubmenu_title" style="float: left;">系统设置</label>
+						<button class="pub_btn_add white_btn btn_style">新增</button>
+						<!--<button class="pubmenu_back pubmenu_btn">返回</button>-->
+					</div>
+					<div class="content_middle">
+						<div class="form_box">
+							<div class="one" id="pubmenu_click" style="overflow: auto;width: 65%;margin-left: 150px">
+								<!-- <div class="pubmenu_box">
+									<button class="defar_btn"><img src='img/1-111.png' class='icod_pub'>商品类型</button>
+								</div> -->
+							</div>
+							<div class="two">
+								<div class="middle_box" style="overflow-x: auto;">
+									<table id="table_center" class="table pubmen_table">
+										<tbody>
+											<!--<tr>
+												<td class='pubmen_table_td1'>1</td>
+												<td class='pubmen_table_td2'>商品类型商品类型商品类型商品类型商品类型商品类型</td>
+												<td class='pubmen_table_td3'>
+													<a class='pubmen_table_del'>删除</a>
+													<a class='pubmen_table_edit'>修改</a>
+												</td>
+											</tr>-->
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="bottom_content">
+
+					</div>
+					<!--模拟框-->
+					<div class="bg-model div_overlay" id="active_model_div">
+						<div class='content div_content' style="width: 350px;margin-top: 200px;">
+							<div class="model_nav">
+								<label></label>
+								<i id="out_model" class="icon-clear icon-clear_margin back_model">&#xe8e7;</i>
+							</div>
+							<div class="model_list" style="text-align: center;padding: 10px 15px 0 15px;">
+								<div class="model_list_append">
+									<div class="model_form">
+										<span style="width: 32px;">名称</span><input id="pubmenu_name" maxlength="15" />
+									</div>
+									<div class="model_form">
+										<span style="width: 32px;">排序</span><input id="pubmenu_num" maxlength="10" type="number" />
+									</div>
+								</div>
+							</div>
+							<div class="prompt_model">
+							</div>
+							<div class="modelbtn_box" style="margin-top: 15px;padding-bottom: 15px;padding-left: 113px;">
+								<a id="save_product" href="#" class="save_btn btn_style">确定</a>
+								<a id="edit_product" href="#" class="save_btn btn_style dispy_none">确定</a>
+								<!--<a id="out_model" href="#" class="clear_model">返回</a>-->
+							</div>
+						</div>
+					</div>
+					<!--模拟2-->
+					<div class="bg-model div_overlay" id="alert_model_div">
+						<div class='content div_content' style="width: 350px;margin-top: 200px;">
+							<div class="model_nav">
+								<label style="font-size: 20px;">提示</label>
+								<i class="icon-clear icon-clear_margin back_model">&#xe8e7;</i>
+							</div>
+							<div class="model_list" style="text-align: center;padding: 20px 15px 20px 15px;">
+								<div class="model_list_append" id="alert_text">
+
+								</div>
+							</div>
+							<div class="prompt_model">
+
+							</div>
+							<div class="modelbtn_box" style="margin-top: 15px;padding-bottom: 15px;padding-left: 0;text-align: center;">
+								<a id="alert_ok" href="#" class="save_btn btn_style">确定</a>
+								<!--<a id="out_model" href="#" class="clear_model">取消</a>-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/i_nav_menu.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/paging.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/i_psi_pub.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/i_pubmenu.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+	<meta charset="utf-8" />
+	<title>精雕在线进销存</title>
+	<link rel="stylesheet" type="text/css" href="DatePicker/skin/WdatePicker.css" />
+	<link rel="stylesheet" type="text/css" href="css/page_style.css" />
+	<link rel="stylesheet" type="text/css" href="css/i_psi.css" />
+	<!--[if lt IE 11]>
+		<script src="js/json2.js" type="text/javascript" charset="utf-8"></script>
+		<![endif]-->
+</head>
+<style>
+	.form_content label,
+	.form_content span{
+		font-size: 16px;
+	}
+</style>
+<body>
+	<div class="content_box">
+		<div class="row-fluid">
+			<div class="content_right dispy_none">
+				<div class="content_top" style="text-align: left;">
+					<label>进货单明细</label>
+					<a href="#" class="sale_coby">单据复制</a>
+					<div class="form_box" style="padding-left: 15px;padding-top: 0;">
+						<div class="form_content" style="width: 100%;">
+							<label class="purdetail_span">进货单号：</label>
+							<span id="purcode"></span>
+						</div>
+						<div class="form_content" style="width: 71%;">
+							<label class="purdetail_span" style="float: left;">供货商：</label>
+							<div class="" style="float: left;width: 89%;margin-top: 15px;padding-left: 5px;">
+								<span id="cust_name"></span>
+							</div>
+						</div>
+						<div class="form_content" style="width: 28%;">
+							<label class="purdetail_span">进货日期：</label>
+							<input id="purdate" type="text" readonly value="" class="detail_input" />
+						</div>
+						<div class="form_content" style="width: 71%;">
+							<label class="purdetail_span" style="float: left;">进货备注：</label>
+							<div class="" style="float: left;width: 89%;padding-left: 5px;">
+								<label id="purothers" class="detail_input" style="width: 100%"></label>
+							</div>
+						</div>
+						<div class="form_content" style="width: 28%;">
+							<label class="purdetail_span">预到日期：</label>
+							<input type="text" id="senddate" readonly value="" class="detail_input" />
+						</div>
+					</div>
+				</div>
+				<div class="content_middle">
+					<div class="middle_box" style="overflow-x: auto;">
+						<table id="table_center" class="table">
+							<thead>
+								<tr>
+									<th>序号</th>
+									<th>商品编码</th>
+									<th>商品名称</th>
+									<th>规格型号</th>
+									<th>单位</th>
+									<th>仓库</th>
+									<th style="text-align: right;">数量</th>
+									<th style="text-align: right;">单价</th>
+									<th style="text-align: right;">金额</th>
+									<th>备注</th>
+								</tr>
+							</thead>
+							<tbody>
+
+							</tbody>
+							<tfoot>
+								<tr>
+									<td height="34px" style="font-weight: bold;">合计</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td id="sum_amount" style="font-weight: bold;text-align: right;"></td>
+									<td></td>
+									<td id="table_totalmoney" style="font-weight: bold;text-align: right;"></td>
+									<td></td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+				<div class="bottom_content" style="text-align: right;margin-bottom: 30px;">
+					<div class="detail_bottom_box">
+						<div class="" style="width: 72%;float: left;text-align: left;">
+							<span class="data_name purdetail_span">录入人：</span>
+							<label class="data_name" id="operator"></label>
+						</div>
+						<div class="" style="width: 27%;float: left;text-align: left;">
+							<span class="data_time purdetail_span">录入日期：</span>
+							<label class="data_time" id="input_date"></label>
+						</div>
+					</div>
+					<a href="#" class="white_btn btn_style" id="out_btn" style="margin-right: 60px;">返回</a>
+					<a href="#" class="save_btn btn_style" id="edit_purdetail" style="margin-right: 20px;">修改</a>
+				</div>
+				<div class="pay_box">
+					<div class="pay_title">
+						<label class="pay_title_label">支付记录</label>
+						<label class="pay_title_label">余款：</label>
+						<span class="pay_title_num" id="moneyleft"></span>元
+						<a href="#" class="blue_btn btn_style" id="pay_add" style="margin-left: 67px;">支付录入</a>
+					</div>
+					<div class="pay_table_box">
+						<table class="pay_table" id="pay_table">
+							<thead>
+								<tr>
+									<th style="width: 5%">序号</th>
+									<th style="width: 12%">支付单号</th>
+									<th style="width: 10%">支付日期</th>
+									<th style="width: 7%">支付方式</th>
+									<th style="width: 7%;text-align: right">支付金额</th>
+									<th style="width: 7%">录入</th>
+									<th style="width: 16%">录入日期</th>
+									<th style="text-align: left">备注</th>
+									<th style="width: 7%"></th>
+								</tr>
+							</thead>
+							<tbody>
+
+							</tbody>
+							<tfoot>
+								<tr>
+									<td style="text-align: center">合计</td>
+									<td colspan="4" style="text-align: right" id="sum_paymoney"></td>
+									<td colspan="4"></td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+				<!--模拟框-->
+				<div class="bg-model div_overlay" id="active_model_div">
+					<div class='content div_content' style="width: 400px;margin-top: 200px;">
+						<div class="model_nav">
+							<label></label>
+							<i id="out_model" class="icon-clear icon-clear_margin back_model">&#xe8e7;</i>
+						</div>
+						<div class="model_list" style="text-align: center;padding: 10px 15px 0 15px;">
+							<div class="model_list_append">
+								<div class="model_form">
+									<span style="width: 64px;">支付日期</span>
+									<input type="text" id="paydate" class="Wdate" readonly="" value="" onclick="WdatePicker({maxDate:'%y-%M-%d'})" style="cursor:pointer;">
+								</div>
+								<div class="model_form">
+									<span style="width: 64px;">支付金额</span>
+									<input id="paymoney" maxlength="15" type="number"  class="model_data"/>
+								</div>
+								<div class="model_form">
+									<span style="width: 64px;">支付方式</span>
+									<select id="paysort" style="padding-left: 8px;" class="model_data">
+										<option value="">选择</option>
+										<option value="584">支付宝</option>
+									</select>
+								</div>
+								<div class="model_form">
+									<span style="width: 64px;">备注</span>
+									<input id="payothers" maxlength="100" type="text" class="model_data"/>
+								</div>
+							</div>
+						</div>
+						<div class="prompt_model">
+						</div>
+						<div class="modelbtn_box" style="margin-top: 15px;padding-bottom: 15px;padding-left: 145px;">
+							<a id="save_pay" href="#" class="save_btn btn_style">确定</a>
+							<a id="edit_pay" href="#" class="save_btn btn_style dispy_none">确定</a>
+							<!--<a id="out_model" href="#" class="clear_model">返回</a>-->
+						</div>
+					</div>
+				</div>
+				<!--删除提示框-->
+				<div class="bg-model div_overlay" id="alert_model_div">
+					<div class='content div_content' style="width: 410px;margin-top: 200px;">
+						<div class="model_nav">
+							<label style="font-size: 20px;">提示</label>
+							<i class="icon-clear icon-clear_margin back_model">&#xe8e7;</i>
+						</div>
+						<div class="model_list" style="text-align: center;padding: 30px 15px 30px 15px;">
+							<div class="model_list_append" id="alert_text">
+
+							</div>
+						</div>
+						<div class="prompt_model">
+
+						</div>
+						<div class="modelbtn_box" style="margin-top: 15px;padding-bottom: 15px;padding-left: 0;text-align: center;">
+							<a id="alert_ok" href="#" class="save_btn btn_style">确定</a>
+							<!--<a id="out_model" href="#" class="clear_model">取消</a>-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="DatePicker/WdatePicker.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/i_nav_menu.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/i_psi_pub.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/i_purdetail.js" type="text/javascript" charset="utf-8"></script>
+
+</html>
